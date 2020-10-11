@@ -1,0 +1,32 @@
+.preview-image{
+  flex-shrink: 0;
+  min-width: 80%;
+  min-height: 80%;
+  max-height:80%;
+  max-width: 100%;
+
+}
+.fill{
+  display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    background-color: whitesmoke;
+    color: slateblue;
+    height: 350px;
+}
+.jumboclass{
+  padding: 1rem !important;
+  margin-bottom: 2% !important;
+  background-color: darkblue !important;
+  color: white;
+}
+.app-container{
+  background-color: #87cefa;
+  height: 100vh;
+  overflow-y: auto;
+}
+.buttonClass{
+  background-color: white !important;
+  color: blue !important;
+}
