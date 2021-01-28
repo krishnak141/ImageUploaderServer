@@ -15,7 +15,7 @@ const mongoose = require('mongoose')
 const files = require('./routes/files');
 
 const url =config.mongoUrl;
-const connect = mongoose.connect(url);
+const connect = mongoose.connect(url,{ useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 
 connect
   .then((db) => {

@@ -49,6 +49,28 @@ filesRouter.route("/:fileId")
 .options(cors.corsWithOptions,(req,res)=>{
     res.sendStatus(200);
 })
+.get(cors.corsWithOptions, (req, res, next) => {
+    console.log(req.params.id)
+    Files.findById({"_id": req.params.fileId})
+        .then((resp) => {
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json')
+            res.json(resp);
+        },
+            (err) => next(err))
+        .catch((err) => next(err))
+})
+.put(cors.corsWithOptions, (req, res, next) => {
+    console.log(req.params.id)
+    Files.findByIdAndUpdate({"_id": req.params.fileId},{"title":req.body.title})
+        .then((resp) => {
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json')
+            res.json(resp);
+        },
+            (err) => next(err))
+        .catch((err) => next(err))
+})
 .delete(cors.corsWithOptions, (req, res, next) => {
     console.log(req.params.id)
     Files.findByIdAndRemove({"_id": req.params.fileId})
@@ -60,5 +82,6 @@ filesRouter.route("/:fileId")
             (err) => next(err))
         .catch((err) => next(err))
 })
+
 
 module.exports = filesRouter
