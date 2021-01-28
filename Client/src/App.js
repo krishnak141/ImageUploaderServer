@@ -31,7 +31,7 @@ function App() {
       data.append('imageFile', updatedFile)
       Axios.post(baseUrl, data)
         .then((res) => {
-          Axios.post(`${baseUrl}/files`, { file_name: filename, original_name: file.name })
+          Axios.post(`${baseUrl}/files`, { title: filename, original_name: file.name })
             .then((res) => {
               setImages([...images, res.data])
               document.getElementById("file").value = "";
@@ -60,9 +60,9 @@ function App() {
       </Row>
       <Row className="justify-content-center">
         {
-          images.map((item, index) =>
+          images.slice(0).reverse().map((item, index) =>
             <Card className="col-sm-12 col-md-3 col-lg-3 col-xl-3 mx-3 my-1 align-items-center fill">
-              <img variant="top" id={item.original_name} src={`${baseUrl}/images/${item.file_name}`} className='preview-image' />
+              <img variant="top" id={item.original_name} src={`${baseUrl}/images/${item.title}`} className='preview-image' />
               <Card.Body>
                 <Card.Title>{item.original_name}</Card.Title>
               </Card.Body>

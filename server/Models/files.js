@@ -2,10 +2,14 @@ const mongoose=require('mongoose');
 const Schema=mongoose.Schema
 
 const fileSchema=new Schema({
-    file_name:{
+    title:{
         type:String,
         required:true,
         unique:true
+    },
+    description:{
+        type:String,
+        required:true,
     },
     original_name:{
         type:String,
